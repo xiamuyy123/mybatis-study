@@ -15,7 +15,8 @@ public class Main {
                 "4444444444444" +
                 "master test"+
                 "hot-fix test" +
-                "push test");
+                "push test"  +
+                 "pull test");
     }
 
     @Test
