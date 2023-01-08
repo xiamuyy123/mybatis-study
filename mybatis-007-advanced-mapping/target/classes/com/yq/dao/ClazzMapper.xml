@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao.ClazzMapper">
+
+    <resultMap id="clazzMap" type="clazz">
+        <id property="cid" column="cid"/>
+        <result property="cname" column="cname"/>
+        <collection property="stus" ofType="student">
+            <id property="sid" column="sid"/>
+            <result property="sname" column="sname"/>
+        </collection>
+    </resultMap>
+    <resultMap id="clazzMapSetp" type="clazz">
+        <id property="cid" column="cid"/>
+        <result property="cname" column="cname"/>
+        <collection property="stus"
+                    select="com.yq.dao.StudentMapper.selectByCid"
+                    column="cid">
+<!--            <id property="sid" column="sid"/>-->
+<!--            <result property="sname" column="sname"/>-->
+        </collection>
+    </resultMap>
+    <select id="selectClazzWithStep" resultMap="clazzMapSetp">
+        select cid,cname from class where cid = #{cid}
+    </select>
+    <select id="selectClazzWithStus" resultMap="clazzMap">
+        select c.cid,c.cname,s.sid,s.sname
+        from class c left join student s
+        on c.cid = s.cid
+        where c.cid = #{cid}
+    </select>
+    <select id="selectClazzById" resultType="clazz">
+        select cid,cname from class where cid = #{cid}
+    </select>
+</mapper>

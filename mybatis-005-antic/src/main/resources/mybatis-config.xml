@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<!--    &lt;!&ndash; 删除这些 &ndash;&gt;-->
+<!--    <settings>-->
+<!--        <setting name="logImpl" value="SLF4J"/>-->
+<!--    </settings>-->
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.yq.pojo"/>
+    </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+    <environments default="mybatis">
+        <environment id="mybatis">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://116.205.245.143:3306/mybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="xxx123"/>
+            </dataSource>
+        </environment>
+        <environment id="yyq">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://116.205.245.143:3306/yyq"/>
+                <property name="username" value="root"/>
+                <property name="password" value="xxx123"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        <mapper class="com.yq.dao.CarMapper"/>-->
+        <package name="com.yq.dao"/>
+    </mappers>
+</configuration>
