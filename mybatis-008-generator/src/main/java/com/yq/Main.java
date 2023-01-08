@@ -13,7 +13,8 @@ public class Main {
         System.out.println("Hello world!111111111122222" +
                 "3333333333333" +
                 "4444444444444" +
-                "master test");
+                "master test"+
+                "hot-fix test");
     }
 
     @Test
