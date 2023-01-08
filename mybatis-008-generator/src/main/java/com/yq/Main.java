@@ -10,7 +10,8 @@ import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!111111111122222");
+        System.out.println("Hello world!111111111122222" +
+                "3333333333333");
     }
 
     @Test
